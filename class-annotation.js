@@ -25,12 +25,15 @@
 
     @module-configuration:
         {
-            "packageName": "harden-property",
-            "fileName": "harden-property.js",
-            "moduleName": "hardenProperty",
+            "packageName": "class-annotation",
+            "fileName": "class-annotation.js",
+            "moduleName": "Annotation",
+            "moduleType": "class-prototype",
+            "className": "Annotation",
             "authorName": "Richeve S. Bebedor",
             "authorEMail": "richeve.bebedor@gmail.com",
-            "repository": "git@github.com:volkovasystems/harden-property.git",
+            "repository": "git@github.com:volkovasystems/class-annotation.git",
+            "testCase": "class-annotation-test.js",
             "isGlobal": "true"
         }
     @end-module-configuration
