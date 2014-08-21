@@ -74,6 +74,11 @@ var Annotation = function Annotation( value ){
 
 };
 
+hardenProperty( Annotation, "interpret",
+    function interpret( value ){
+        return new Annotation( value );
+    } );
+
 hardenProperty( Annotation, "ANNOTATE", "@<meta>:" );
 
 hardenProperty( Annotation, "PRIORITIZE", "@" );
@@ -106,6 +111,10 @@ Annotation.prototype.modify = function modify( annotation ){
 };
 
 Annotation.prototype.getValue = function getValue( ){
+
+};
+
+Annotation.prototype.hasAnnotation = function hasAnnotation( ){
 
 };
 
