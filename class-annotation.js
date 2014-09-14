@@ -72,26 +72,51 @@
             "BIND": "="
         }
     @end-class-constant
+
+    @constructor-configuration:
+        {
+        }
+    @end-construct-configuration
+
+    @constructor-documentation:
+    @end-constructor-documentation
 */
-var Annotation = function Annotation( value ){
+var Annotation = function Annotation( entity ){
+    /*:
+        @meta-configuration:
+            {
+                "entity": "string"
+            }
+        @end-meta-configuration
+    */
+
 
 };
 
-hardenProperty( Annotation, "interpret",
-    function interpret( value ){
-        return new Annotation( value );
-    } );
+Annotation.interpretAnnotation = function interpretAnnotation( annotation ){
+    return new Annotation( annotation );
+};
 
-hardenProperty( Annotation, "ANNOTATE", "@<meta>:" );
+Annotation.generateAnnotation = function generateAnnotation( value ){
+    return new Annotation( value );
+};
 
-hardenProperty( Annotation, "PRIORITIZE", "@" );
-hardenProperty( Annotation, "PIPE", ":::" );
-hardenProperty( Annotation, "TRANSFORM", ":" );
-hardenProperty( Annotation, "CHAIN", "::" );
+Annotation.ANNOTATE = "@<meta>:";
+Annotation.PRIORITIZE = "@";
+Annotation.PIPE = ":::";
+Annotation.TRANSFORM = ":";
+Annotation.CHAIN = "::";
+Annotation.TRANSIT = "->";
+Annotation.LINK = "~";
+Annotation.BIND = "=";
 
-hardenProperty( Annotation, "TRANSIT", "->" );
-hardenProperty( Annotation, "LINK", "~" );
-hardenProperty( Annotation, "BIND", "=" );
+Annotation.prototype.initialize = function initialize( entity ){
+
+};
+
+Annotation.prototype.configure = function configure( entity ){
+
+};
 
 Annotation.prototype.append = function append( annotation, operator ){
 
@@ -154,7 +179,13 @@ Annotation.prototype.bind = function bind( annotation ){
 
 };
 
-var hardenProperty = require( "./harden-property/harden-property.js" );
+const ANNOTATE = "@<meta>:";
+const PRIORITIZE = "@";
+const PIPE = ":::";
+const TRANSFORM = ":";
+const CHAIN = "::";
+const TRANSIT = "->";
+const LINK = "~";
+const BIND = "=";
 
 module.exports = Annotation;
-
