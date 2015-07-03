@@ -81,24 +81,27 @@
     @constructor-documentation:
     @end-constructor-documentation
 */
-var Annotation = function Annotation( entity ){
+var Annotation = function Annotation( entity, meta ){
     /*:
         @meta-configuration:
             {
-                "entity": "string"
+                "entity:required": "string",
+                "meta": "string"
             }
         @end-meta-configuration
     */
 
+    this.initialize.apply( this, argumentsToArray( arguments ) );
 
+    this.configure.apply( this, argumentsToArray( arguments ) );
 };
 
 Annotation.interpretAnnotation = function interpretAnnotation( annotation ){
     return new Annotation( annotation );
 };
 
-Annotation.generateAnnotation = function generateAnnotation( value ){
-    return new Annotation( value );
+Annotation.generateAnnotation = function generateAnnotation( value, meta ){
+    return new Annotation( value, meta );
 };
 
 Annotation.ANNOTATE = "@<meta>:";
@@ -110,11 +113,13 @@ Annotation.TRANSIT = "->";
 Annotation.LINK = "~";
 Annotation.BIND = "=";
 
-Annotation.prototype.initialize = function initialize( entity ){
-
+Annotation.prototype.initialize = function initialize( entity, meta ){
+    if( meta && typeof meta == "string" ){
+        
+    }
 };
 
-Annotation.prototype.configure = function configure( entity ){
+Annotation.prototype.configure = function configure( entity, meta ){
 
 };
 
@@ -178,6 +183,8 @@ Annotation.prototype.link = function link( annotation ){
 Annotation.prototype.bind = function bind( annotation ){
 
 };
+
+var argumentsToArray = require( "./arguments-to-array/arguments-to-array.js" );
 
 const ANNOTATE = "@<meta>:";
 const PRIORITIZE = "@";
